@@ -32,6 +32,7 @@ import { fetchMetrics } from '../../../store/rootActions';
 import { getMeasuresAndMeta } from '../../../api/measures';
 import { getLeakPeriod } from '../../../helpers/periods';
 import { enhanceMeasure } from '../../../components/measure/utils';
+import { isViewType } from '../utils';
 import type { Component, Period } from '../types';
 import type { Measure, MeasureEnhanced } from '../../../components/measure/types';
 
@@ -44,7 +45,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const banQualityGate = (component: Component): Array<Measure> => {
   let newMeasures = [...component.measures];
-  if (['VW', 'SVW', 'APP'].includes(component.qualifier)) {
+  if (isViewType(component)) {
     newMeasures = newMeasures.filter(measure => measure.metric !== 'alert_status');
   }
   if (component.qualifier === 'APP') {
