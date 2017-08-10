@@ -44,7 +44,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const banQualityGate = (component: Component): Array<Measure> => {
   let newMeasures = [...component.measures];
-  if (!['VW', 'SVW', 'APP'].includes(component.qualifier)) {
+  if (['VW', 'SVW', 'APP'].includes(component.qualifier)) {
     newMeasures = newMeasures.filter(measure => measure.metric !== 'alert_status');
   }
   if (component.qualifier === 'APP') {
