@@ -30,6 +30,7 @@ export default function TreeIcon({ className, size = 14 }: Props) {
       className={className}
       height={size}
       width={size}
+      transform="translate(0,1)"
       viewBox="0 0 16 16"
       fillRule="evenodd"
       clipRule="evenodd"
